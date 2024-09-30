@@ -12,7 +12,7 @@ let menukod=''
 function addmenuitems() {
     menukod=''
     datacategory.map(item => {
-        let link = item.slug == 'komponiyalar' 
+        let link = item.slug == 'kampaniyalar' 
             ? `/pages/kampaniyalar.html` 
             : `/pages/category.html?category=${item.slug}`
                 menukod += `
