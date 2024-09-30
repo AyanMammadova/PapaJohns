@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="icon" type="image/x-icon" href="/fav.ico">
+    <!-- <link rel="stylesheet" href="/src/output.css"> -->
+    <link rel="stylesheet" href="/css/style.css">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+</head>
+<body>
+    
+    <div id="graybg2" class="w-[100%] h-[100vh] bg-[#10101080] hidden fixed  z-50 ">
+        <div class="w-[100%] h-[100vh] flex justify-center items-center fixed z-50 ">
+            <div id="yourcart" class=" hidden bg-white w-[500px] relative p-4">
+                <span onclick="closecart()" class="cursor-pointer font-bold absolute right-0">Bağla  <span class="right-0 m-[4px] h-[2px] px-1 text-white bg-black rounded-full">x</span></span>
+                <p class="text-2xl font-bold">Səbət</p>
+                <p>Səbətinizdəki məhsul sayı: <span id="totalcount"></span></p><br>
+                <div id="cartproducts" class="flex-col">
+                    
+                </div>
+                <div class="flex justify-between mt-5">
+                    <button class="w-[40%] text-white bg-red-600">Sifarişi göndər</button>
+                    <p class="w-[40%] text-xl">Ümumi məbləğ <span class="totalmoneybasket">0</span>₼</p>
+                </div>
+            </div>
+        </div>
+    </div>
+        <header>
+            <div id="headdivdesktop" class="font-bold font-sans text-xl flex justify-between items-center h-16  m-auto w-11/12">
+                <div class="gap-10 flex ml-[10%]">
+                    <a href="">Restoranlar</a>
+                    <a href="">PapaBonus</a>
+                </div>
+                <div class="flex gap-10 items-center">
+                    <select id="languageselection">
+                        <option value="">Azərbaycanca</option>
+                        <option value="">English</option>
+                        <option value="">Pусский</option>
+                    </select>
+                    <a href="">Giriş /Qeydiyyat</a>
+                    <div onclick="showcart()" class="relative cursor-pointer ">
+                        <div class="absolute bg-red-600  rounded-full left-5 border-2 border-gray-50 text-white text-xs px-1"><span class="totalcountbasket">0</span></div>
+                        <i class="fa-solid fa-basket-shopping text-2xl"></i>
+                        <p class="text-base"><span class="totalmoneybasket">0</span>₼</p>
+                    </div>
+                </div>
+            </div>
+            <div id="headdivmobile" class="flex w-[95%] mx-auto justify-between">
+                <a href="../index.html"><img class="h-[50px] m-[10px]" src="https://www.papajohns.az/img/content/pj_logo_web_new.png" ></a>
+                <div class="flex justify-around w-[70%] items-center">
+                    <div class="text-center">
+                        <img class="h-[25px]" src="https://www.papajohns.az/img/content/flag_az.png" alt="">
+                        AZ
+                    </div>
+                    <div class="text-center ">
+                        <i class="fa-solid fa-user"></i> <br>
+                        Giriş
+                    </div>
+                    <div onclick="showcart()" class="relative cursor-pointer ">
+                        <div class="absolute bg-red-600  rounded-full left-5 border-2 border-gray-50 text-white text-xs px-1"><span class="totalcountbasket">0</span></div>
+                        <i class="fa-solid fa-basket-shopping text-2xl"></i>
+                        <p class="text-base"><span class="totalmoneybasket">0</span>₼</p>
+                    </div>
+                </div>
+            </div>
+            <menu class="h-[80px] bg-[#AD0F14]">
+                <ul id="menuul" class="flex text-white items-center justify-around text-xl gap-5 font-bold">
+                    <li><a href="../index.html"><img onclick="ok()" id="logoindesktop" class=" h-[80px]" src="https://www.papajohns.az/img/content/pj_logo_web_new.png" alt=""></a></li>
+                    <ul id="menucate" class="flex gap-5 menu">
+                        
+                    </ul>
+                    
+                    <li id="zeropoint" class="ml-20">0 bal <span class="bg-[#0F9675] pl-3 pr-3 rounded-full">?</span></li>
+                </ul>
+            </menu>
+        </header>
+
+        <main>
+            <div id="maindiv1" class="bg-[#f1f1f1] h-20 m-5 flex items-center justify-center">
+                <p id="promokod" class="text-center font-bold  text-2lg">Promo kodunuz var ? <span class="text-[#0F9675]">Endirimdən istifadə edin</span></p>
+                <input class="border-2 h-10 border-[#0F9675] rounded-lg ml-1" type="text" placeholder="Promo kodu daxil edin">
+                <button class="text-white mx-2 px-2 h-10 rounded-lg bg-[#0F9675]">OK</button>
+            </div>
+            <div id="maindiv2" class="bg-[#f1f1f1] h-16 m-5 flex items-center ">
+                <ul id="maindiv2ul" class=" flex font-bold gap-2 text-[#363636]">
+                    <li>Hamısı</li>
+                    <li>Toyuqlu</li>
+                    <li>Ət ilə</li>
+                    <li>Vegeterian</li>
+                    <li>Acılı</li>
+                </ul>
+            </div>
+            <div id="currentProduct" class="m-5 flex  justify-around items-center">
+                
+            </div>
+        </main>
+
+        <footer>
+            <div id="footerdiv" class="flex justify-between items-center py-5 p-5 bg-[#AD0F14] text-white font-bold" >
+                <div id="copyc">© COPY</div>
+                <div id="footerlistsdiv" class="py-[20px] flex justify-around">
+                    <ul id="footerlistleft" class="flex gap-3">
+                        <li>Haqqımızda</li>
+                        <li>Sual-cavab</li>
+                        <li>Karyera</li>
+                        <li>Xəmir</li>
+                        <li>Papa-Talk</li>
+                        <li>Şərtlər və Qaydalar</li>
+                    </ul>
+                    <ul id="footerlistright" class="hidden flex-col">
+                        <li>Restoranlar</li>
+                        <li>Kampaniyalar</li>
+                        <li>PapaBonus</li>
+                    </ul>
+                </div>
+                <div>
+                    <img src="https://www.papajohns.az/img/content/footer-images-az-AZ.png" alt="">
+                </div>
+                <ul class="flex gap-3 pr-5 py-2">
+                    <li><i class="fa-brands fa-facebook-f"></i></li>
+                    <li><i class="fa-brands fa-twitter"></i></li>
+                    <li><i class="fa-brands fa-instagram"></i></li>
+                    <li><i class="fa-solid fa-mask"></i></li>
+                </ul>
+                <div class="hidden" id="copy2">© ABC</div>
+            </div>
+
+            
+        </footer>
+
+        <script src="https://unpkg.com/flowbite@1.6.0/dist/flowbite.min.js"></script>
+        <script src="/js/header.js"></script>
+        <script src="/js/category.js"></script>
+        <script src="/js/script.js"></script>
+        <script src="/js/detail.js"></script>
+</body>
+</html>

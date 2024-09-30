@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PapaJohns</title>
+    <link rel="icon" type="image/x-icon" href="fav.ico">
+    <!-- <link rel="stylesheet" href="src/output.css"> -->
+    <link rel="stylesheet" href="css/style.css">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+</head>
+<body>
+    <div id="graybg2" class="w-[100%] h-[100vh] bg-[#10101080]  hidden fixed  z-50 ">
+        <div class="w-[100%] h-[100vh] flex justify-center items-center fixed z-50 ">
+            <div id="yourcart" class=" hidden bg-white w-[600px] relative p-4">
+                <span onclick="closecart()" class="cursor-pointer font-bold absolute right-0">Bağla  <span class="right-0 m-[4px] h-[2px] px-1 text-white bg-black rounded-full">x</span></span>
+                <p class="text-2xl font-bold">Səbət</p>
+                <p>Səbətinizdəki məhsul sayı: <span class="totalcountbasket"></span></p><br>
+            <div id="cartproducts" class="flex-col">
+                
+            </div>
+            <div class="flex justify-between mt-5">
+                <button class="w-[40%] text-white bg-red-600">Sifarişi göndər</button>
+                <p class="w-[40%] text-xl">Ümumi məbləğ <span class="totalmoneybasket">0</span>₼</p>
+            </div>
+            </div>
+        </div>
+    </div>
+        <header>
+            <div id="headdivdesktop" class="font-bold font-sans text-xl flex justify-between items-center h-16  m-auto w-11/12">
+                <div class="gap-10 flex ml-[10%]">
+                    <a href="">Restoranlar</a>
+                    <a href="">PapaBonus</a>
+                </div>
+                <div class="flex gap-10 items-center">
+                    <select id="languageselection">
+                        <option value="">Azərbaycanca</option>
+                        <option value="">English</option>
+                        <option value="">Pусский</option>
+                    </select>
+                    <a href="">Giriş /Qeydiyyat</a>
+                    <div onclick="showcart()" class="relative cursor-pointer ">
+                        <div class="absolute bg-red-600  rounded-full left-5 border-2 border-gray-50 text-white text-xs px-1 totalcountbasket">0</div>
+                        <i class="fa-solid fa-basket-shopping text-2xl"></i>
+                        <p class="text-base"><span class="totalmoneybasket">0</span>₼</p>
+                    </div>
+                </div>
+            </div>
+            <div id="headdivmobile" class="flex w-[95%] mx-auto justify-between">
+                <img class="h-[50px] m-[10px]" src="https://www.papajohns.az/img/content/pj_logo_web_new.png" >
+                <div class="flex justify-around w-[70%] items-center">
+                    <div class="text-center">
+                        <img class="h-[25px]" src="https://www.papajohns.az/img/content/flag_az.png" alt="">
+                        AZ
+                    </div>
+                    <div class="text-center ">
+                        <i class="fa-solid fa-user"></i> <br>
+                        Giriş
+                    </div>
+                    <div onclick="showcart()" class="relative cursor-pointer ">
+                        <div class="absolute bg-red-600  rounded-full left-5 border-2 border-gray-50 text-white text-xs px-1"><span class="totalcountbasket">0</span></div>
+                        <i class="fa-solid fa-basket-shopping text-2xl"></i>
+                        <p class="text-base"><span class="totalmoneybasket">0</span>₼</p>
+                    </div>
+                </div>
+            </div>
+            <menu id="menuul" class="h-[80px] bg-[#AD0F14] flex items-center">
+                <ul class="flex text-white items-center justify-around text-xl gap-5 font-bold">
+                    <li><img onclick="ok()" id="logoindesktop" class=" h-[80px] mx-[30px]" src="https://www.papajohns.az/img/content/pj_logo_web_new.png" alt=""></li>
+                    
+                    <ul id="menuindex" class="flex gap-5 menu">
+                        
+                    </ul>
+                    
+                    <li id="zeropoint" class="ml-20">0 bal <span class="bg-[#0F9675] pl-3 pr-3 rounded-full">?</span></li>
+                </ul>
+            </menu>
+        </header>
+         
+        <main>
+            <div id="maindiv1" class="bg-[#f1f1f1] h-20 m-5 flex items-center justify-center">
+                <p id="promokod" class="text-center font-bold  text-2lg">Promo kodunuz var ? <span class="text-[#0F9675]">Endirimdən istifadə edin</span></p>
+                <input class="border-2 h-10 border-[#0F9675] rounded-lg ml-1" type="text" placeholder="Promo kodu daxil edin">
+                <button class="text-white mx-2 px-2 h-10 rounded-lg bg-[#0F9675]">OK</button>
+            </div>
+            <div id="maindiv2" class="bg-[#f1f1f1] h-16 m-5 flex items-center ">
+                <ul id="maindiv2ul" class=" flex font-bold gap-2 text-[#363636]">
+                    <li>Hamısı</li>
+                    <li>Toyuqlu</li>
+                    <li>Ət ilə</li>
+                    <li>Vegeterian</li>
+                    <li>Acılı</li>
+                </ul>
+            </div>
+            <div id="indicators-carousel" class="relative m-[20px] rounded-none duration-100" data-carousel="static">
+                <!-- Carousel wrapper -->
+                <div class="relative h-56 overflow-hidden rounded-lg md:h-96">
+                    <!-- Item 1 -->
+                    <div class="hidden duration-700 ease-in-out" data-carousel-item="active">
+                        <img src="https://www.papajohns.az/uploads/images/Campaigns/2024/Sentyabr/%C4%B0ki-boyuk-chiken-bbq-and-cheddar-klub-banner%20(1).png" class="absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2" alt="...">
+                    </div>
+                    <!-- Item 2 -->
+                    <div class="hidden duration-700 ease-in-out" data-carousel-item>
+                        <img src="https://www.papajohns.az/uploads/images/Campaigns/2024/Sentyabr/Cola-Orta-Mekrika-%26-Rastik-banner.png" class="absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2" alt="...">
+                    </div>
+                    <!-- Item 3 -->
+                    <div class="hidden duration-700 ease-in-out" data-carousel-item>
+                        <img src="https://www.papajohns.az/uploads/images/Campaigns/2024/Sentyabr/bir-il-birlikde-azadliq-banner.png" class="absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2" alt="...">
+                    </div>
+                    <!-- Item 4 -->
+                    <div class="hidden duration-700 ease-in-out" data-carousel-item>
+                        <img src="https://www.papajohns.az/uploads/images/Campaigns/2024/Sentyabr/Super-papa-and-chiken-parmezan-banner.png" class="absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2" alt="...">
+                    </div>
+                    <!-- Item 5 -->
+                    <div class="hidden duration-700 ease-in-out" data-carousel-item>
+                        <img src="https://www.papajohns.az/uploads/images/Campaigns/2024/Sentyabr/yeniden-derslere-2024-banner.png" class="absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2" alt="...">
+                    </div>
+                     <!-- Item 6 -->
+                     <div class="hidden duration-700 ease-in-out" data-carousel-item>
+                        <img src="https://www.papajohns.az/uploads/images/Campaigns/2024/Avgust/Sayt-banner-vakansiya.png" class="absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2" alt="...">
+                    </div>
+                     <!-- Item 7 -->
+                     <div class="hidden duration-700 ease-in-out" data-carousel-item>
+                        <img src="https://www.papajohns.az/uploads/images/Campaigns/2024/Avgust/parklara-chatdirilma-banner-new.png" class="absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2" alt="...">
+                    </div>
+                     <!-- Item 8 -->
+                     <div class="hidden duration-700 ease-in-out" data-carousel-item>
+                        <img src="https://www.papajohns.az/uploads/images/Campaigns/2023/February/Sayt%20Banner%20Bol%20Bol%202023.jpg" class="absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2" alt="...">
+                    </div>
+                     <!-- Item 9 -->
+                     <div class="hidden duration-700 ease-in-out" data-carousel-item>
+                        <img src="https://www.papajohns.az/uploads/images/Campaigns/2023/Noyabr/New%20products/pizza-party-sat-banner-2023.png" class="absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2" alt="...">
+                    </div>
+                     <!-- Item 10 -->
+                     <div class="hidden duration-700 ease-in-out" data-carousel-item>
+                        <img src="https://www.papajohns.az/uploads/images/banners/yashin%20geder/yashin-qeder-endirim%20%281%29.png" class="absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2" alt="...">
+                    </div>
+                     <!-- Item 11 -->
+                     <div class="hidden duration-700 ease-in-out" data-carousel-item>
+                        <img src="https://www.papajohns.az/uploads/images/banners/Papa%20Talk/papa%20talk%20banner.jpg" class="absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2" alt="...">
+                    </div>
+                </div>
+                <!-- Slider indicators -->
+                <div class="absolute z-30 flex -translate-x-1/2 space-x-3 rtl:space-x-reverse bottom-5 left-1/2">
+                    <button type="button" class="w-3 h-3 rounded-full" aria-current="true" aria-label="Slide 1" data-carousel-slide-to="0"></button>
+                    <button type="button" class="w-3 h-3 rounded-full" aria-current="false" aria-label="Slide 2" data-carousel-slide-to="1"></button>
+                    <button type="button" class="w-3 h-3 rounded-full" aria-current="false" aria-label="Slide 3" data-carousel-slide-to="2"></button>
+                    <button type="button" class="w-3 h-3 rounded-full" aria-current="false" aria-label="Slide 4" data-carousel-slide-to="3"></button>
+                    <button type="button" class="w-3 h-3 rounded-full" aria-current="false" aria-label="Slide 5" data-carousel-slide-to="4"></button>
+                    <button type="button" class="w-3 h-3 rounded-full" aria-current="false" aria-label="Slide 6" data-carousel-slide-to="4"></button>
+                    <button type="button" class="w-3 h-3 rounded-full" aria-current="false" aria-label="Slide 7" data-carousel-slide-to="4"></button>
+                    <button type="button" class="w-3 h-3 rounded-full" aria-current="false" aria-label="Slide 8" data-carousel-slide-to="4"></button>
+                    <button type="button" class="w-3 h-3 rounded-full" aria-current="false" aria-label="Slide 9" data-carousel-slide-to="4"></button>
+                    <button type="button" class="w-3 h-3 rounded-full" aria-current="false" aria-label="Slide 10" data-carousel-slide-to="4"></button>
+                    <button type="button" class="w-3 h-3 rounded-full" aria-current="false" aria-label="Slide 11" data-carousel-slide-to="4"></button>
+                </div>
+                <!-- Slider controls -->
+                <button type="button" class="absolute top-0 start-0 z-30 flex items-center justify-center h-full px-4 cursor-pointer group focus:outline-none" data-carousel-prev>
+                    <span class="inline-flex items-center justify-center w-10 h-10 rounded-full bg-white/30 dark:bg-gray-800/30 group-hover:bg-white/50 dark:group-hover:bg-gray-800/60 group-focus:ring-4 group-focus:ring-white dark:group-focus:ring-gray-800/70 group-focus:outline-none">
+                        <svg class="w-4 h-4 text-white dark:text-gray-800 rtl:rotate-180" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 6 10">
+                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 1 1 5l4 4"/>
+                        </svg>
+                        <span class="sr-only">Previous</span>
+                    </span>
+                </button>
+                <button type="button" class="absolute top-0 end-0 z-30 flex items-center justify-center h-full px-4 cursor-pointer group focus:outline-none" data-carousel-next>
+                    <span class="inline-flex items-center justify-center w-10 h-10 rounded-full bg-white/30 dark:bg-gray-800/30 group-hover:bg-white/50 dark:group-hover:bg-gray-800/60 group-focus:ring-4 group-focus:ring-white dark:group-focus:ring-gray-800/70 group-focus:outline-none">
+                        <svg class="w-4 h-4 text-white dark:text-gray-800 rtl:rotate-180" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 6 10">
+                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 9 4-4-4-4"/>
+                        </svg>
+                        <span class="sr-only">Next</span>
+                    </span>
+                </button>
+            </div>
+
+            
+        </main>
+
+        <footer>
+            <div id="footerdiv" class="flex justify-between items-center py-5 p-5 bg-[#AD0F14] text-white font-bold" >
+                <div id="copyc">© COPY</div>
+                <div id="footerlistsdiv" class="py-[20px] flex justify-around">
+                    <ul id="footerlistleft" class="flex gap-3">
+                        <li>Haqqımızda</li>
+                        <li>Sual-cavab</li>
+                        <li>Karyera</li>
+                        <li>Xəmir</li>
+                        <li>Papa-Talk</li>
+                        <li>Şərtlər və Qaydalar</li>
+                    </ul>
+                    <ul id="footerlistright" class="hidden flex-col">
+                        <li>Restoranlar</li>
+                        <li>Kampaniyalar</li>
+                        <li>PapaBonus</li>
+                    </ul>
+                </div>
+                <div>
+                    <img src="https://www.papajohns.az/img/content/footer-images-az-AZ.png" alt="">
+                </div>
+                <ul class="flex gap-3 pr-5 py-2">
+                    <li><i class="fa-brands fa-facebook-f"></i></li>
+                    <li><i class="fa-brands fa-twitter"></i></li>
+                    <li><i class="fa-brands fa-instagram"></i></li>
+                    <li><i class="fa-solid fa-mask"></i></li>
+                </ul>
+                <div class="hidden" id="copy2">© ABC</div>
+            </div>
+
+            
+        </footer>
+
+    <script src="https://unpkg.com/flowbite@1.6.0/dist/flowbite.min.js"></script>
+    <script src="js/header.js"></script>
+    <script src="js/category.js"></script>
+    <script src="js/script.js"></script>
+    <!-- <script src="js/detail.js"></script> -->
+</body>
+</html>
